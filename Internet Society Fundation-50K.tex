@@ -14,7 +14,7 @@
 \usepackage{titlesec}
 \usepackage{fancyhdr}
 \usepackage{graphicx}
-\usepackage{microtype}
+\usepackage[activate=false]{microtype}
 \usepackage{parskip}
 
 % ─── Geometría ───────────────────────────────────────────────────────────────
@@ -137,13 +137,21 @@ La orografía andina imposibilita el despliegue de infraestructura de telefonía
   \item Éxodo de jóvenes hacia centros urbanos por falta de horizontes locales
 \end{itemize}
 
+\subsection{Conectividad de emergencia: Starlink y la escuela como excepción}
+
+En los escasos casos en que algún emprendimiento productivo o turístico tiene acceso a internet, este se obtiene exclusivamente mediante la contratación individual de \textbf{Starlink} —a un costo mensual prohibitivo para la economía rural andina— o mediante el desplazamiento físico hasta la escuela más cercana, que en algunos parajes cuenta con conexión \textit{wifi}. En ambos casos se trata de un acceso fragmentado, costoso e impracticable para la comunicación cotidiana con clientes y proveedores.
+
+Esta situación tiene consecuencias directas sobre la viabilidad de los emprendimientos familiares y comunitarios: la imposibilidad de mantener comunicación fluida con turistas, agencias y mercados impide la consolidación de cualquier actividad económica sostenible en el territorio.
+
+Meshtastic resuelve este problema de dos maneras complementarias: por un lado, provee comunicación autónoma entre parajes \textit{sin necesidad de internet}; por otro, cuando existe un nodo con acceso a internet (Starlink o escuela), ese nodo funciona como \textbf{gateway MQTT} y extiende la conectividad hacia aplicaciones externas como \textbf{WhatsApp} (vía protocolo MQTT-bridge), permitiendo que toda la red se beneficie de ese acceso puntual sin que cada hogar deba costear la conexión de forma individual.
+
 \subsection{El contexto humano}
 
-Desde 2003 la UNESCO reconoce el valor patrimonial de este territorio. Sin embargo, las familias jóvenes se ven forzadas al éxodo urbano por falta de caminos, energía, transporte y conectividad. Este proyecto existe para que los jóvenes tengan un lugar adonde volver, y para que formar una familia en el territorio sea un horizonte posible.
+Desde 2003 la UNESCO reconoce el valor patrimonial de este territorio. Sin embargo, las familias jóvenes se ven forzadas al éxodo urbano por falta de caminos, energía, transporte y conectividad. Este proyecto está planteado para iniciar un proceso de prosperidad progresiva para que los jóvenes tengan un lugar adonde volver, y para que formar una familia en el territorio sea un horizonte posible.
 
 \subsection{Las comunidades beneficiarias}
 
-El proyecto interviene en siete comunidades distribuidas a lo largo de la Quebrada de Humahuaca:
+El proyecto interviene en siete comunidades distribuidas desde el centro hacia el norte de la Quebrada de Humahuaca:
 
 \begin{center}
 \begin{tabular}{clc}
@@ -171,6 +179,20 @@ Meshtastic es un protocolo de comunicación de código abierto que opera sobre r
 
 Cada nodo amplifica y retransmite la señal de sus vecinos, creando una red mallada (\textit{mesh}) que se extiende a lo largo de la cadena montañosa. La señal LoRa puede alcanzar distancias de 10 a 30 km en condiciones de línea de vista, lo que la hace especialmente adecuada para la orografía andina.
 
+\subsection{Puente hacia WhatsApp mediante MQTT}
+
+Una de las capacidades más relevantes de Meshtastic para el contexto productivo y turístico de las comunidades es su compatibilidad con el protocolo \textbf{MQTT} (\textit{Message Queuing Telemetry Transport}). Cuando uno o más nodos de la red tienen acceso a internet —ya sea por Starlink, conexión escolar u otra fuente puntual— ese nodo actúa como \textbf{gateway} y publica los mensajes de la red \textit{mesh} en un servidor MQTT. Desde allí, mediante integraciones disponibles, los mensajes pueden entregarse en \textbf{grupos de WhatsApp} accesibles desde cualquier celular con señal convencional.
+
+Esto tiene implicancias concretas para los emprendimientos comunitarios:
+
+\begin{itemize}
+  \item Un turista puede consultar disponibilidad de alojamiento desde su teléfono con señal, y la consulta llega al poblador en el cerro a través de la red \textit{mesh}.
+  \item Un emprendimiento puede recibir pedidos o coordinar con proveedores sin moverse del paraje.
+  \item La red entera se beneficia de cada punto de acceso a internet existente, sin que cada hogar deba costear conectividad individual.
+\end{itemize}
+
+La configuración MQTT es parte del proceso de instalación y capacitación previsto en el plan de trabajo.
+
 \subsection{Arquitectura de la red}
 
 Cada comunidad contará con dos tipos de dispositivos:
@@ -178,7 +200,10 @@ Cada comunidad contará con dos tipos de dispositivos:
 \begin{description}
   \item[Terminales personales] Dispositivos compactos (USD 30 c/u) que los pobladores llevan consigo y conectan a su teléfono celular mediante Bluetooth. Permiten enviar y recibir mensajes sin señal de celular ni internet.
 
-  \item[Nodos fijos en altura] Equipos con carcasa de protección IP67, panel solar y batería (USD 90 c/u) instalados en puntos elevados de los cerros. Garantizan la cobertura y el alcance de la red entre parajes.
+  \item[Nodos fijos en altura] Equipos con carcasa de protección IP67, panel solar y batería (USD 90 c/u) instalados en puntos elevados de los cerros. Garantizan la cobertura y el alcance de la red entre parajes. Los nodos ubicados en puntos con acceso a internet (escuelas, parajes con Starlink) funcionan además como gateways MQTT.
+  
+   \item[Nodo Radio Municipal Humahuaca] El nodo principal de la ciudad de Humahuaca, estará en la antena de la radio municipal, permitiendo que los miembros de la Red Yerba Buena puedan dar aviso a la población de siniestros, festividades, sucesos climáticos, entre otras cuestiones de interés comunitario, en la radio principal del departamento.
+  
 \end{description}
 
 \subsection{Infraestructura de movilidad autónoma}
@@ -189,7 +214,7 @@ Este sistema convierte residuos orgánicos secos en gas combustible (\textit{gas
 
 \subsection{Gestión comunitaria por mujeres}
 
-La red será operada y mantenida por mujeres rurales de cada paraje. El diseño del sistema prioriza la simplicidad operativa: los nodos fijos son autónomos (panel solar, sin intervención diaria) y las terminales personales funcionan como cualquier dispositivo Bluetooth.
+La red será operada y mantenida por mujeres rurales de cada paraje. El diseño del sistema prioriza la simplicidad operativa: los nodos fijos son autónomos (panel solar, sin intervención diaria) y las terminales personales funcionan como cualquier dispositivo Bluetooth o por usb.
 
 % ═══════════════════════════════════════════════════════════════════════════════
 \section{Participación Comunitaria}
@@ -217,7 +242,7 @@ cheLA se organiza en nodos temáticos de investigación y creación colectiva. C
 
 \subsection{Responsable del proyecto}
 
-\textbf{Patricia Vanesa Quiroz} fue coordinadora de cheLA entre 2004 y 2007, período en que se consolidó la alianza institucional entre Fundación exACTa y UCLA REMAP. Su trayectoria de 20 años en la intersección de tecnología comunitaria, cultura y territorio en América Latina es la base operativa de este proyecto.
+\textbf{Patricia Vanesa Quiroz} fue coordinadora de cheLA entre 2004 y 2007, período en que se consolidó la el funcionamiento institucional entre Fundación exACTa y UCLA REMAP, mediante proyectos de Computación Cultural Comunitaria. Su trayectoria de 20 años en la intersección de tecnología comunitaria, cultura y territorio en América Latina es la base operativa de este proyecto.
 
 \subsection{Asesor académico}
 
@@ -234,13 +259,16 @@ cheLA se organiza en nodos temáticos de investigación y creación colectiva. C
     Adquisición del vehículo. Viaje a Córdoba con el instalador para capacitación e instalación del gasificador con el Ing. Edmundo Ramos. Compra de hardware Meshtastic (terminales y nodos).
 
   \item[Meses 2--3: Capacitación técnica]
-    Visita del técnico de Meshtastic Argentina para capacitación en instalación, configuración y mantenimiento de nodos. Participan la coordinadora, el instalador y referentes comunitarios.
+    Visita del técnico de Meshtastic Argentina para capacitación en instalación, configuración y mantenimiento de nodos, incluyendo la configuración de gateways MQTT para los puntos con acceso a internet. Participan la coordinadora, el instalador y referentes comunitarios.
 
   \item[Meses 3--10: Despliegue por comunidades]
-    Instalación progresiva en las siete comunidades. Dos fines de semana por mes de trabajo de campo. Proceso paralelo de consulta comunitaria y co-diseño de protocolos de uso.
+    Instalación progresiva en las siete comunidades. Dos fines de semana por mes de trabajo de campo. Proceso paralelo de consulta comunitaria y co-diseño de protocolos de uso. Relevamiento de puntos con Starlink o wifi escolar para configuración de gateways MQTT.
 
   \item[Meses 6--12: Capacitación a mujeres operadoras]
     Formación de referentes femeninas en cada paraje para la gestión autónoma de la red. Monitoreo de uso y ajuste de protocolos.
+
+  \item[Meses 6--12: Diseño y gestión de proyectos productivos y turísticos]
+    La coordinadora del proyecto trabaja de forma paralela al despliegue técnico en el \textbf{diseño, gestión y hosting de proyectos productivos y turísticos} familiares y comunitarios: identidad digital, páginas web, canales de comunicación con clientes y proveedores (incluyendo integración WhatsApp--MQTT), y sistemas básicos de reserva y comercialización. Este componente forma parte integral de los honorarios de coordinación, ya que la conectividad cobra sentido únicamente si existe una oferta comunitaria organizada capaz de aprovecharla.
 
   \item[Meses 10--12: Documentación y evaluación]
     Sistematización de aprendizajes, métricas de uso, informe final. Preparación de la Etapa 2 (Scaling Track).
@@ -249,8 +277,8 @@ cheLA se organiza en nodos temáticos de investigación y creación colectiva. C
 \subsection{Etapas futuras (referencia)}
 
 \begin{description}
-  \item[Etapa 2 --- USD 100.000] Extensión a comunidades adicionales de la Puna jujeña y consolidación institucional del Colectivo en Jujuy.
-  \item[Etapa 3 --- USD 100.000] Replicación del modelo en otras regiones andinas de Argentina, Bolivia y Perú.
+  \item[Etapa 2 --- USD 100.000] Extensión a comunidades adicionales de la Quebrada, Puna y Valles jujeños y consolidación institucional del Colectivo en Jujuy.
+  \item[Etapa 3 --- USD 100.000] Replicación del modelo en otras regiones andinas de Argentina y estudio para replicar en la región andina de países cercanos andinos, como Chile, Bolivia y Perú.
 \end{description}
 
 % ═══════════════════════════════════════════════════════════════════════════════
@@ -308,6 +336,12 @@ Traslados y viáticos (coordinadora + instalador)
 \multicolumn{3}{l}{\textbf{Recursos humanos}} \\
 Coordinación del proyecto (12 meses)
   & Patricia Vanesa Quiroz & 18.000 \\
+\multicolumn{3}{l}{\small\color{darkgray}\itshape
+  \quad Incluye: dirección técnica y comunitaria · diseño, gestión} \\
+\multicolumn{3}{l}{\small\color{darkgray}\itshape
+  \quad y hosting de proyectos productivos y turísticos · integración} \\
+\multicolumn{3}{l}{\small\color{darkgray}\itshape
+  \quad WhatsApp--MQTT · identidad digital de emprendimientos} \\
 Instalador en campo (24 fines de semana + viáticos)
   & Técnico local & 8.640 \\
 \midrule
@@ -334,6 +368,7 @@ Reserva de contingencia (8,5\%)
   \item Los planos del gasificador son de código abierto y descarga gratuita (\href{https://autoabasura.com}{autoabasura.com}).
   \item El hospedaje durante la capacitación en campo es provisto por la red comunitaria sin costo.
   \item Los honorarios del instalador incluyen viáticos de traslado entre los siete parajes.
+  \item Los honorarios de coordinación incluyen el diseño, gestión y hosting de proyectos productivos y turísticos comunitarios, la configuración del bridge WhatsApp--MQTT y la identidad digital de los emprendimientos. Este trabajo es inseparable de la infraestructura técnica: la red cobra valor cuando existe una oferta organizada capaz de aprovecharla.
   \item El porcentaje de imprevistos refleja la complejidad logística del trabajo en alta montaña andina.
 \end{itemize}
 
@@ -349,6 +384,8 @@ La sostenibilidad del proyecto descansa en tres pilares:
   \item[Autonomía energética] El vehículo adaptado con gasificador opera con biomasa local (residuos orgánicos secos disponibles en todos los parajes), eliminando la dependencia de combustible fósil para las operaciones de campo.
 
   \item[Base institucional] La trayectoria de Fundación exACTa/cheLA garantiza la continuidad institucional del proyecto más allá del período de financiamiento. El modelo de nodo BioCulturas permite integrar nuevas fuentes de financiamiento (Etapas 2 y 3) sobre la base construida.
+
+  \item[Autogeneración de ingresos] La red habilita un modelo de generación de ingresos propios que financia su mantenimiento a largo plazo. Colectivo Nodo Norte desarrolla y gestiona \textbf{portales web e identidad digital} para los emprendimientos turísticos y productivos de las comunidades y familias rurales, canalizando la comunicación con turistas y consumidores externos —incluyendo la integración con WhatsApp vía MQTT— hacia reservas y ventas concretas. A cambio, el Colectivo percibe una \textbf{comisión por cada reserva o venta concretada}, sin costo fijo para el emprendimiento mientras no haya resultado. Este modelo alinea los incentivos del Colectivo con el éxito económico de las familias: a mayor actividad turística y productiva en el territorio, mayor la capacidad de autofinanciamiento de la red y del equipo que la sostiene. Con un número suficiente de emprendimientos activos, este flujo cubre los costos operativos de la red sin depender de financiamiento externo.
 \end{description}
 
 % ═══════════════════════════════════════════════════════════════════════════════
@@ -358,13 +395,13 @@ La sostenibilidad del proyecto descansa en tres pilares:
 Al finalizar la Etapa 1:
 
 \begin{itemize}
-  \item \textbf{700 personas} con acceso a comunicación digital en 7 comunidades previamente aisladas
+  \item \textbf{500 personas} con acceso a comunicación digital en 7 parajes y comunidades previamente aisladas
   \item \textbf{70 terminales personales} distribuidas, con prioridad a mujeres y familias con menores
-  \item \textbf{28 nodos fijos} instalados en puntos estratégicos de los cerros
+  \item \textbf{28 nodos fijos} instalados en puntos estratégicos de los cerros, incluyendo gateways MQTT en puntos con acceso a internet
   \item \textbf{7 mujeres operadoras} capacitadas para la gestión autónoma de la red
+  \item \textbf{Proyectos productivos y turísticos} de familias y comunidades con presencia digital, canales de comunicación activos y acceso a WhatsApp desde la red \textit{mesh}
   \item \textbf{1 vehículo de campo} operativo con movilidad autónoma de combustible fósil
   \item \textbf{Documentación completa} del modelo replicable para otras comunidades andinas
-
 \end{itemize}
 
 % ═══════════════════════════════════════════════════════════════════════════════
@@ -372,7 +409,7 @@ Al finalizar la Etapa 1:
 % ═══════════════════════════════════════════════════════════════════════════════
 
 \begin{description}
-  \item[Patricia Vanesa Quiroz] Coordinadora del proyecto. Ex coordinadora de cheLA (2004--2007). 20 años de trayectoria en tecnología comunitaria y cultura en América Latina. Radicada en Tres Cruces, Quebrada de Humahuaca.
+  \item[Patricia Vanesa Quiroz] Coordinadora del proyecto. Ex coordinadora de cheLA (2004--2007). 20 años de trayectoria en tecnología comunitaria y cultura en América Latina. Radicada en Tres Cruces, Quebrada de Humahuaca. Responsable del diseño, gestión y hosting de los proyectos productivos y turísticos familiares y comunitarios que la red habilita, incluyendo identidad digital, integración WhatsApp--MQTT y sistemas de comunicación con el exterior.
 
   \item[Fabian Wagmister] Asesor estratégico. Director General de cheLA. Fundador de UCLA REMAP. Especialista en \textit{Cultural Civic Computing} y tecnología para el empoderamiento cívico en comunidades latinoamericanas.
 
@@ -380,9 +417,9 @@ Al finalizar la Etapa 1:
 
   \item[Ing. Edmundo Ramos] Asesor técnico en movilidad. Creador de la tecnología autoabasura.com. Responsable de la instalación y transferencia de conocimiento del gasificador de biomasa.
 
-  \item[Técnico Meshtastic Argentina] Por definir. Responsable de la capacitación técnica en instalación y mantenimiento de nodos LoRa.
+  \item[Técnico Meshtastic Argentina] Por definir. Responsable de la capacitación técnica en instalación, mantenimiento de nodos LoRa y configuración de gateways MQTT.
 
-  \item[Instalador local] Por definir. Técnico con experiencia en trabajo en altura. Responsable del despliegue de nodos en campo.
+  \item[José María Ruiz] Coordinador Técnico del Colectivo Nodo Norte. Técnico con experiencia en trabajo en altura. Responsable del despliegue de nodos en campo.
 \end{description}
 
 % ═══════════════════════════════════════════════════════════════════════════════
@@ -403,7 +440,7 @@ Al finalizar la Etapa 1:
 \vfill
 {\color{primary}\rule{\linewidth}{1pt}}
 {\small\color{darkgray}\centering
-  Documento generado en \LaTeX{} --- Versión 1.0 --- Mayo 2026\\
+  Documento generado en \LaTeX{} --- Versión 1.1 --- Mayo 2026\\
   Repositorio: \href{https://github.com/Colectivo-Nodo-Norte/Red-Yerba-Buena}{github.com/Colectivo-Nodo-Norte/Red-Yerba-Buena}
 }
 
