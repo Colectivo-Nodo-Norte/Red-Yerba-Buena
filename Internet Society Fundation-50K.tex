@@ -1,0 +1,410 @@
+\documentclass[12pt,a4paper]{article}
+
+% ─── Paquetes ────────────────────────────────────────────────────────────────
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{microtype}
+\usepackage{parskip}
+
+% ─── Geometría ───────────────────────────────────────────────────────────────
+\geometry{
+  top=2.5cm, bottom=2.5cm,
+  left=3cm, right=3cm
+}
+
+% ─── Colores ─────────────────────────────────────────────────────────────────
+\definecolor{primary}{HTML}{1A5276}
+\definecolor{secondary}{HTML}{2E86C1}
+\definecolor{accent}{HTML}{F39C12}
+\definecolor{lightgray}{HTML}{F2F3F4}
+\definecolor{darkgray}{HTML}{424949}
+
+% ─── Tipografía de secciones ─────────────────────────────────────────────────
+\titleformat{\section}
+  {\large\bfseries\color{primary}}
+  {\thesection.}{0.5em}{}[\titlerule]
+
+\titleformat{\subsection}
+  {\normalsize\bfseries\color{secondary}}
+  {\thesubsection.}{0.5em}{}
+
+% ─── Encabezado y pie ────────────────────────────────────────────────────────
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\textcolor{darkgray}{\small Red Yerba Buena --- CCC Grant 2026}}
+\lhead{\textcolor{darkgray}{\small Colectivo Nodo Norte / cheLA / Fundación exACTa}}
+\rfoot{\textcolor{darkgray}{\small Página \thepage}}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ─── Hiperlinks ──────────────────────────────────────────────────────────────
+\hypersetup{
+  colorlinks=true,
+  linkcolor=primary,
+  urlcolor=secondary,
+  pdfauthor={Patricia Vanesa Quiroz},
+  pdftitle={Red Yerba Buena — Propuesta CCC 2026}
+}
+
+% ═══════════════════════════════════════════════════════════════════════════════
+\begin{document}
+% ═══════════════════════════════════════════════════════════════════════════════
+
+% ─── Portada ─────────────────────────────────────────────────────────────────
+\begin{titlepage}
+  \centering
+  \vspace*{2cm}
+
+  {\color{primary}\rule{\linewidth}{2pt}}
+  \vspace{0.5cm}
+
+  {\Huge\bfseries\color{primary} Red Yerba Buena}\\[0.4cm]
+  {\large\color{secondary} Ecosistema de Autonomía Territorial\\y Resonancia Aplicada}\\[0.3cm]
+  {\normalsize\color{darkgray} Quebrada de Humahuaca --- Jujuy --- Argentina}
+
+  \vspace{0.5cm}
+  {\color{primary}\rule{\linewidth}{2pt}}
+
+  \vspace{2cm}
+
+  \begin{tabular}{ll}
+    \textbf{Convocatoria:}   & Internet Society Foundation --- CCC Grant 2026 \\[4pt]
+    \textbf{Track:}          & Catalyst Track (hasta USD 50.000) \\[4pt]
+    \textbf{Monto solicitado:} & USD 50.000 \\[4pt]
+    \textbf{Duración:}       & 12 meses \\[4pt]
+    \textbf{Organización:}   & Colectivo Nodo Norte \\[4pt]
+    \textbf{Entidad fiscal:} & Fundación exACTa / cheLA \\[4pt]
+    \textbf{Responsable:}    & Patricia Vanesa Quiroz \\[4pt]
+    \textbf{Contacto:}       & \href{mailto:vaneq@colectivonodonorte.ar}{vaneq@colectivonodonorte.ar} \\[4pt]
+    \textbf{Fecha:}          & Mayo 2026 \\
+  \end{tabular}
+
+  \vfill
+
+  {\small\color{darkgray}
+    Colectivo Nodo Norte opera como nodo BioCulturas de cheLA\\
+    (Centro Hipermediático Experimental Latinoamericano)\\
+    bajo la personería jurídica de \textbf{Fundación exACTa}\\
+    en colaboración con \textbf{UCLA REMAP}
+  }
+
+  \vspace{1cm}
+  {\color{primary}\rule{\linewidth}{1pt}}
+\end{titlepage}
+
+% ─── Índice ──────────────────────────────────────────────────────────────────
+\tableofcontents
+\newpage
+
+% ═══════════════════════════════════════════════════════════════════════════════
+\section{Resumen Ejecutivo}
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\textbf{Red Yerba Buena} es una red de conectividad \textit{mesh} LoRa (tecnología Meshtastic) diseñada para siete comunidades indígenas de la Quebrada de Humahuaca, provincia de Jujuy, Argentina, donde la telefonía móvil es inexistente debido a la compleja orografía andina.
+
+La solución opera sin infraestructura corporativa, sin costos de mantenimiento recurrentes y sin dependencia de conectividad satelital. Será gestionada y mantenida por mujeres rurales de cada paraje, garantizando la autonomía operativa de la red.
+
+El proyecto es implementado por \textbf{Colectivo Nodo Norte} bajo el marco institucional de \textbf{Fundación exACTa / cheLA}, con más de 20 años de experiencia en tecnología comunitaria en América Latina en colaboración con \textbf{UCLA REMAP}.
+
+Esta solicitud financia la \textbf{Etapa 1} de un proyecto de USD 250.000 en tres etapas. La Etapa 1 despliega la infraestructura base en las siete comunidades y establece la capacidad institucional y comunitaria necesaria para escalar.
+
+% ═══════════════════════════════════════════════════════════════════════════════
+\section{Contexto y Problema}
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\subsection{El territorio}
+
+La Quebrada de Humahuaca es un valle andino de 155 km de longitud declarado \textbf{Patrimonio de la Humanidad por la UNESCO en 2003}. Sus comunidades originarias, reconocidas constitucionalmente desde 1994 bajo el Artículo 75 inciso 17 de la Constitución Nacional Argentina, habitan parajes de alta montaña a altitudes que oscilan entre los 2.000 y los 3.800 metros sobre el nivel del mar.
+
+\subsection{La brecha de conectividad}
+
+La orografía andina imposibilita el despliegue de infraestructura de telefonía móvil convencional en los parajes rurales de la Quebrada. Las familias que habitan estos territorios no tienen acceso a comunicación digital de ningún tipo, lo que genera:
+
+\begin{itemize}
+  \item Imposibilidad de comunicar emergencias sanitarias o climáticas
+  \item Aislamiento respecto de servicios públicos y educativos
+  \item Exclusión de oportunidades económicas digitales
+  \item Éxodo de jóvenes hacia centros urbanos por falta de horizontes locales
+\end{itemize}
+
+\subsection{El contexto humano}
+
+Desde 2003 la UNESCO reconoce el valor patrimonial de este territorio. Sin embargo, las familias jóvenes se ven forzadas al éxodo urbano por falta de caminos, energía, transporte y conectividad. Este proyecto existe para que los jóvenes tengan un lugar adonde volver, y para que formar una familia en el territorio sea un horizonte posible.
+
+\subsection{Las comunidades beneficiarias}
+
+El proyecto interviene en siete comunidades distribuidas a lo largo de la Quebrada de Humahuaca:
+
+\begin{center}
+\begin{tabular}{clc}
+\toprule
+\textbf{N°} & \textbf{Comunidad} & \textbf{Provincia} \\
+\midrule
+1 & Humahuaca       & Jujuy \\
+2 & Chorrillos      & Jujuy \\
+3 & Hornaditas      & Jujuy \\
+4 & Negra Muerta    & Jujuy \\
+5 & Iturbe          & Jujuy \\
+6 & Azul Pampa      & Jujuy \\
+7 & Tres Cruces     & Jujuy \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+% ═══════════════════════════════════════════════════════════════════════════════
+\section{La Solución}
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\subsection{Tecnología Meshtastic}
+
+Meshtastic es un protocolo de comunicación de código abierto que opera sobre radiofrecuencia LoRa (\textit{Long Range}). Permite transmitir mensajes de texto, coordenadas GPS y alertas entre dispositivos sin necesidad de internet, telefonía móvil ni infraestructura centralizada.
+
+Cada nodo amplifica y retransmite la señal de sus vecinos, creando una red mallada (\textit{mesh}) que se extiende a lo largo de la cadena montañosa. La señal LoRa puede alcanzar distancias de 10 a 30 km en condiciones de línea de vista, lo que la hace especialmente adecuada para la orografía andina.
+
+\subsection{Arquitectura de la red}
+
+Cada comunidad contará con dos tipos de dispositivos:
+
+\begin{description}
+  \item[Terminales personales] Dispositivos compactos (USD 30 c/u) que los pobladores llevan consigo y conectan a su teléfono celular mediante Bluetooth. Permiten enviar y recibir mensajes sin señal de celular ni internet.
+
+  \item[Nodos fijos en altura] Equipos con carcasa de protección IP67, panel solar y batería (USD 90 c/u) instalados en puntos elevados de los cerros. Garantizan la cobertura y el alcance de la red entre parajes.
+\end{description}
+
+\subsection{Infraestructura de movilidad autónoma}
+
+El trabajo de campo en la Quebrada requiere movilidad en un territorio donde el combustible fósil es escaso y costoso. El proyecto incorpora una \textbf{Ford F-100 adaptada con tecnología de gasificación de biomasa} según los planos de código abierto de \href{https://autoabasura.com}{autoabasura.com}, desarrollados por el Ing. Edmundo Ramos.
+
+Este sistema convierte residuos orgánicos secos en gas combustible (\textit{gasura}), permitiendo operar el vehículo sin gasolina. Los gases de escape presentan una pureza superior al aire atmosférico, con aporte de oxígeno al entorno. La capacitación e instalación se realizará directamente con el Ing. Ramos en su taller de Córdoba.
+
+\subsection{Gestión comunitaria por mujeres}
+
+La red será operada y mantenida por mujeres rurales de cada paraje. El diseño del sistema prioriza la simplicidad operativa: los nodos fijos son autónomos (panel solar, sin intervención diaria) y las terminales personales funcionan como cualquier dispositivo Bluetooth.
+
+% ═══════════════════════════════════════════════════════════════════════════════
+\section{Participación Comunitaria}
+% ═══════════════════════════════════════════════════════════════════════════════
+
+Colectivo Nodo Norte cuenta con vínculos familiares establecidos en cada uno de los siete parajes identificados y está transitando el proceso formal de \textbf{consulta libre, previa e informada} con cada asamblea comunitaria, respetando el Convenio 169 de la OIT incorporado a la Constitución Argentina (Art. 75 inc. 17).
+
+Este proceso es inherentemente participativo y no puede acelerarse sin comprometer la soberanía comunitaria. El consentimiento familiar en territorio existe; el proceso asambleario está en curso. La metodología \textbf{A.B.R.A.} (Acciones Biosistémicas de Resonancia Aplicada) que guía el trabajo del Colectivo prioriza el co-diseño con la comunidad antes de cualquier despliegue técnico.
+
+La red será co-diseñada, implementada y mantenida por las propias comunidades, garantizando la sostenibilidad del proyecto más allá del período de financiamiento.
+
+% ═══════════════════════════════════════════════════════════════════════════════
+\section{Marco Institucional}
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\subsection{Colectivo Nodo Norte}
+
+Laboratorio de innovación social y soberanía tecnológica radicado en la Quebrada de Humahuaca. Opera bajo el marco de acción A.B.R.A. (Acciones Biosistémicas de Resonancia Aplicada), un enfoque integral que busca el desarrollo humano consciente mediante el equilibrio entre el ser y su entorno. Se dedica al diseño e implementación de Tecnologías Situadas para revertir el vaciamiento de los territorios rurales, integrando saberes ancestrales con herramientas contemporáneas.
+
+\subsection{Fundación exACTa / cheLA}
+
+\textbf{Fundación exACTa} es una organización sin fines de lucro con sede en Buenos Aires, Argentina, fundada en 2003 en colaboración con \textbf{UCLA REMAP} y el UCLA Program on Digital Cultures. A través de \textbf{cheLA} (Centro Hipermediático Experimental Latinoamericano), desarrolla investigación y práctica en la intersección del arte, la ciencia y la tecnología con impacto en comunidades latinoamericanas.
+
+cheLA se organiza en nodos temáticos de investigación y creación colectiva. Colectivo Nodo Norte actúa como \textbf{nodo BioCulturas} de esta red, bajo cuyo marco se presenta este proyecto.
+
+\subsection{Responsable del proyecto}
+
+\textbf{Patricia Vanesa Quiroz} fue coordinadora de cheLA entre 2004 y 2007, período en que se consolidó la alianza institucional entre Fundación exACTa y UCLA REMAP. Su trayectoria de 20 años en la intersección de tecnología comunitaria, cultura y territorio en América Latina es la base operativa de este proyecto.
+
+\subsection{Asesor académico}
+
+\textbf{Fabian Wagmister}, Director General de cheLA y fundador de UCLA REMAP, actúa como asesor estratégico del proyecto. Su trabajo en \textit{Cultural Civic Computing} y su colaboración activa con comunidades latinoamericanas proveen el marco conceptual y académico de la iniciativa.
+
+% ═══════════════════════════════════════════════════════════════════════════════
+\section{Plan de Trabajo}
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\subsection{Etapa 1 — Esta solicitud (Meses 1--12)}
+
+\begin{description}
+  \item[Meses 1--2: Preparación institucional y técnica]
+    Adquisición del vehículo. Viaje a Córdoba con el instalador para capacitación e instalación del gasificador con el Ing. Edmundo Ramos. Compra de hardware Meshtastic (terminales y nodos).
+
+  \item[Meses 2--3: Capacitación técnica]
+    Visita del técnico de Meshtastic Argentina para capacitación en instalación, configuración y mantenimiento de nodos. Participan la coordinadora, el instalador y referentes comunitarios.
+
+  \item[Meses 3--10: Despliegue por comunidades]
+    Instalación progresiva en las siete comunidades. Dos fines de semana por mes de trabajo de campo. Proceso paralelo de consulta comunitaria y co-diseño de protocolos de uso.
+
+  \item[Meses 6--12: Capacitación a mujeres operadoras]
+    Formación de referentes femeninas en cada paraje para la gestión autónoma de la red. Monitoreo de uso y ajuste de protocolos.
+
+  \item[Meses 10--12: Documentación y evaluación]
+    Sistematización de aprendizajes, métricas de uso, informe final. Preparación de la Etapa 2 (Scaling Track).
+\end{description}
+
+\subsection{Etapas futuras (referencia)}
+
+\begin{description}
+  \item[Etapa 2 --- USD 100.000] Extensión a comunidades adicionales de la Puna jujeña y consolidación institucional del Colectivo en Jujuy.
+  \item[Etapa 3 --- USD 100.000] Replicación del modelo en otras regiones andinas de Argentina, Bolivia y Perú.
+\end{description}
+
+% ═══════════════════════════════════════════════════════════════════════════════
+\section{Presupuesto}
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\subsection{Resumen por categoría}
+
+\begin{center}
+\begin{longtable}{p{8cm}rr}
+\toprule
+\textbf{Concepto} & \textbf{Detalle} & \textbf{USD} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Concepto} & \textbf{Detalle} & \textbf{USD} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{\small continúa en la página siguiente}\\
+\endfoot
+\bottomrule
+\endlastfoot
+
+\multicolumn{3}{l}{\textbf{Hardware de red}} \\
+Terminales personales Meshtastic
+  & 70 unidades × USD 30 & 2.100 \\
+Nodos fijos en cerros (panel solar + protección IP67)
+  & 28 unidades × USD 90 & 2.520 \\
+\midrule
+
+\multicolumn{3}{l}{\textbf{Herramental}} \\
+Equipamiento para instalación en altura
+  & Taladro, arnés, multímetro, etc. & 800 \\
+\midrule
+
+\multicolumn{3}{l}{\textbf{Capacitación técnica}} \\
+Honorarios técnico Meshtastic Argentina
+  & 1 persona × 1 semana & 1.000 \\
+Pasaje aéreo BUE--JUJ--BUE
+  & 1 pasaje & 200 \\
+Viáticos 7 días
+  & Alimentación y movilidad local & 140 \\
+\midrule
+
+\multicolumn{3}{l}{\textbf{Movilidad territorial}} \\
+Ford F-100 segunda mano
+  & Vehículo de campo & 6.000 \\
+Capacitación e instalación de gasificador
+  & Ing. Edmundo Ramos, Córdoba & 650 \\
+Traslados y viáticos (coordinadora + instalador)
+  & Viaje a Córdoba & 200 \\
+\midrule
+
+\multicolumn{3}{l}{\textbf{Recursos humanos}} \\
+Coordinación del proyecto (12 meses)
+  & Patricia Vanesa Quiroz & 18.000 \\
+Instalador en campo (24 fines de semana + viáticos)
+  & Técnico local & 8.640 \\
+\midrule
+
+\multicolumn{3}{l}{\textbf{Administración}} \\
+Gestión contable y Sponsor Fiscal
+  & Fundación exACTa & 5.000 \\
+\midrule
+
+\multicolumn{3}{l}{\textbf{Imprevistos}} \\
+Reserva de contingencia (8,5\%)
+  & Trabajo en alta montaña & 4.250 \\
+\midrule[\heavyrulewidth]
+
+\multicolumn{2}{l}{\textbf{TOTAL}} & \textbf{50.000} \\
+
+\end{longtable}
+\end{center}
+
+\subsection{Notas al presupuesto}
+
+\begin{itemize}
+  \item El vehículo queda en propiedad de la organización y es reutilizado en las Etapas 2 y 3.
+  \item Los planos del gasificador son de código abierto y descarga gratuita (\href{https://autoabasura.com}{autoabasura.com}).
+  \item El hospedaje durante la capacitación en campo es provisto por la red comunitaria sin costo.
+  \item Los honorarios del instalador incluyen viáticos de traslado entre los siete parajes.
+  \item El porcentaje de imprevistos refleja la complejidad logística del trabajo en alta montaña andina.
+\end{itemize}
+
+% ═══════════════════════════════════════════════════════════════════════════════
+\section{Sostenibilidad}
+% ═══════════════════════════════════════════════════════════════════════════════
+
+La sostenibilidad del proyecto descansa en tres pilares:
+
+\begin{description}
+  \item[Autonomía técnica] Los nodos Meshtastic son alimentados por energía solar, no requieren mantenimiento diario y operan indefinidamente sin costos recurrentes. Las mujeres operadoras capacitadas pueden resolver las incidencias más comunes sin asistencia externa.
+
+  \item[Autonomía energética] El vehículo adaptado con gasificador opera con biomasa local (residuos orgánicos secos disponibles en todos los parajes), eliminando la dependencia de combustible fósil para las operaciones de campo.
+
+  \item[Base institucional] La trayectoria de Fundación exACTa/cheLA garantiza la continuidad institucional del proyecto más allá del período de financiamiento. El modelo de nodo BioCulturas permite integrar nuevas fuentes de financiamiento (Etapas 2 y 3) sobre la base construida.
+\end{description}
+
+% ═══════════════════════════════════════════════════════════════════════════════
+\section{Impacto Esperado}
+% ═══════════════════════════════════════════════════════════════════════════════
+
+Al finalizar la Etapa 1:
+
+\begin{itemize}
+  \item \textbf{700 personas} con acceso a comunicación digital en 7 comunidades previamente aisladas
+  \item \textbf{70 terminales personales} distribuidas, con prioridad a mujeres y familias con menores
+  \item \textbf{28 nodos fijos} instalados en puntos estratégicos de los cerros
+  \item \textbf{7 mujeres operadoras} capacitadas para la gestión autónoma de la red
+  \item \textbf{1 vehículo de campo} operativo con movilidad autónoma de combustible fósil
+  \item \textbf{Documentación completa} del modelo replicable para otras comunidades andinas
+
+\end{itemize}
+
+% ═══════════════════════════════════════════════════════════════════════════════
+\section{Equipo}
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\begin{description}
+  \item[Patricia Vanesa Quiroz] Coordinadora del proyecto. Ex coordinadora de cheLA (2004--2007). 20 años de trayectoria en tecnología comunitaria y cultura en América Latina. Radicada en Tres Cruces, Quebrada de Humahuaca.
+
+  \item[Fabian Wagmister] Asesor estratégico. Director General de cheLA. Fundador de UCLA REMAP. Especialista en \textit{Cultural Civic Computing} y tecnología para el empoderamiento cívico en comunidades latinoamericanas.
+
+  \item[Negra Xue] Coordinadora del nodo BioCulturas de cheLA. Enlace institucional entre el proyecto y la red cheLA/Fundación exACTa.
+
+  \item[Ing. Edmundo Ramos] Asesor técnico en movilidad. Creador de la tecnología autoabasura.com. Responsable de la instalación y transferencia de conocimiento del gasificador de biomasa.
+
+  \item[Técnico Meshtastic Argentina] Por definir. Responsable de la capacitación técnica en instalación y mantenimiento de nodos LoRa.
+
+  \item[Instalador local] Por definir. Técnico con experiencia en trabajo en altura. Responsable del despliegue de nodos en campo.
+\end{description}
+
+% ═══════════════════════════════════════════════════════════════════════════════
+\section{Información de Contacto}
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\begin{tabular}{ll}
+\textbf{Organización:}     & Colectivo Nodo Norte \\
+\textbf{Entidad legal:}    & Fundación exACTa / cheLA \\
+\textbf{Responsable:}      & Patricia Vanesa Quiroz \\
+\textbf{Email:}            & \href{mailto:vaneq@colectivonodonorte.ar}{vaneq@colectivonodonorte.ar} \\
+\textbf{Web org.:}         & \href{https://colectivonodonorte.ar}{colectivonodonorte.ar} \\
+\textbf{Web institucional:}& \href{https://chela.org.ar}{chela.org.ar} \\
+\textbf{Dirección:}        & Tres Cruces, Dpto. Humahuaca, Provincia de Jujuy, Argentina \\
+\textbf{GitHub:}           & \href{https://github.com/Colectivo-Nodo-Norte}{github.com/Colectivo-Nodo-Norte} \\
+\end{tabular}
+
+\vfill
+{\color{primary}\rule{\linewidth}{1pt}}
+{\small\color{darkgray}\centering
+  Documento generado en \LaTeX{} --- Versión 1.0 --- Mayo 2026\\
+  Repositorio: \href{https://github.com/Colectivo-Nodo-Norte/Red-Yerba-Buena}{github.com/Colectivo-Nodo-Norte/Red-Yerba-Buena}
+}
+
+\end{document}
