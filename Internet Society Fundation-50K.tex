@@ -179,7 +179,7 @@ Meshtastic es un protocolo de comunicación de código abierto que opera sobre r
 
 Cada nodo amplifica y retransmite la señal de sus vecinos, creando una red mallada (\textit{mesh}) que se extiende a lo largo de la cadena montañosa. La señal LoRa puede alcanzar distancias de 10 a 30 km en condiciones de línea de vista, lo que la hace especialmente adecuada para la orografía andina.
 
-\textbf{Resiliencia ante emergencias.} La principal fortaleza de esta tecnología es que \textbf{no depende de ninguna infraestructura externa para funcionar}: si internet cae, si la telefonía móvil falla, si hay un corte de energía en la región, la red Meshtastic sigue operando de forma completamente autónoma gracias a sus nodos solares. Meshtastic fue concebida originalmente para contextos de emergencia, rescate y operaciones en terrenos de orografía compleja —exactamente las condiciones de la Quebrada de Humahuaca, donde los aludes, las crecidas de quebradas y el aislamiento climático son riesgos reales y recurrentes. En una situación de siniestro, esta red puede ser el único canal de comunicación disponible para coordinar evacuaciones, ubicar personas y solicitar asistencia, convirtiéndose en infraestructura crítica de seguridad comunitaria.
+\textbf{Resiliencia ante emergencias.} La principal fortaleza de esta tecnología es que \textbf{no depende de ninguna infraestructura externa para funcionar}: si internet cae, si la telefonía móvil falla, si hay un corte de energía en la región, la red Meshtastic sigue operando de forma completamente autónoma gracias a sus nodos solares. Meshtastic fue concebida originalmente para contextos de emergencia, rescate y operaciones en terrenos de orografía compleja —exactamente las condiciones de la Quebrada de Humahuaca, donde los aludes, las crecidas de quebradas y el aislamiento climático son riesgos reales y recurrentes. En una situación de siniestro, esta red puede ser el único canal de comunicación disponible para coordinar evacuaciones, ubicar personas y solicitar asistencia, convirtiéndose en infraestructura crítica de seguridad comunitaria. El proyecto contempla la integración formal de los \textbf{Bomberos Voluntarios} y de \textbf{Defensa Civil} de la Quebrada de Humahuaca como usuarios institucionales de la red, dotándolos de terminales y protocolos de comunicación específicos para situaciones de emergencia. Esta integración multiplica el valor de la infraestructura: la misma red que conecta a una familia en el cerro con un turista en la ciudad puede activar una cadena de rescate coordinada entre parajes, bomberos y defensa civil en minutos.
 
 \subsection{Puente hacia WhatsApp mediante MQTT}
 
@@ -216,6 +216,22 @@ Este sistema convierte residuos orgánicos secos en gas combustible (\textit{gas
 La red será operada y mantenida por mujeres rurales de cada paraje. El diseño del sistema prioriza la simplicidad operativa: los nodos fijos son autónomos (panel solar, sin intervención diaria) y las terminales personales funcionan como cualquier dispositivo Bluetooth.
 
 % ═══════════════════════════════════════════════════════════════════════════════
+\section{Marco Regulatorio}
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\subsection{Espectro radioeléctrico}
+
+La tecnología LoRa opera en la banda de \textbf{915 MHz}, clasificada como banda ISM (\textit{Industrial, Scientific and Medical}) de uso libre en Argentina según las regulaciones de la \textbf{ENACOM} (Ente Nacional de Comunicaciones). Esta banda no requiere licencia de operación para potencias de transmisión en los rangos utilizados por Meshtastic (hasta 1W), lo que elimina barreras regulatorias para el despliegue de la red.
+
+\subsection{Derechos de las comunidades indígenas}
+
+El proyecto opera dentro del marco constitucional argentino que reconoce los derechos de los pueblos originarios (Art. 75 inc. 17, CN) y el \textbf{Convenio 169 de la OIT}, incorporado al ordenamiento jurídico nacional. El proceso de consulta libre, previa e informada en curso con cada asamblea comunitaria es el mecanismo de cumplimiento de este marco normativo. Los convenios firmados entre Fundación exACTa y cada comunidad formalizan los acuerdos de co-gestión y propiedad comunitaria de la infraestructura desplegada en cada paraje.
+
+\subsection{Personería jurídica y gestión de fondos}
+
+\textbf{Fundación exACTa} está debidamente constituida bajo la normativa argentina de fundaciones (Ley 19.836), con CUIT 30-70870222-2, y cuenta con experiencia acreditada en la gestión de fondos internacionales en colaboración con UCLA REMAP. Es la entidad responsable de la recepción, administración y rendición de los fondos del grant.
+
+% ═══════════════════════════════════════════════════════════════════════════════
 \section{Participación Comunitaria}
 % ═══════════════════════════════════════════════════════════════════════════════
 
@@ -226,6 +242,8 @@ Como resultado de esta trayectoria docente, muchos de los \textbf{referentes com
 El proyecto está transitando el proceso formal de \textbf{consulta libre, previa e informada} con cada asamblea comunitaria, respetando el Convenio 169 de la OIT incorporado a la Constitución Argentina (Art. 75 inc. 17). Este proceso es inherentemente participativo y no puede acelerarse sin comprometer la soberanía comunitaria. Como primer resultado concreto, \textbf{en mayo de 2026 se firma el convenio entre Fundación exACTa y la comunidad de Azul Pampa}, estableciendo el marco formal de colaboración para el despliegue de la red en ese paraje.
 
 La metodología \textbf{A.B.R.A.} (Acciones Biosistémicas de Resonancia Aplicada) que guía el trabajo del Colectivo prioriza el co-diseño con la comunidad antes de cualquier despliegue técnico. La red será co-diseñada, implementada y mantenida por las propias comunidades, garantizando la sostenibilidad del proyecto más allá del período de financiamiento.
+
+Además de las comunidades indígenas, el proyecto incorpora como \textbf{actores institucionales} a los \textbf{Bomberos Voluntarios de Humahuaca} y a \textbf{Defensa Civil} del departamento, quienes participarán en el diseño de los protocolos de emergencia de la red y recibirán capacitación en el uso del sistema. Su involucramiento garantiza que la red funcione como infraestructura oficial de gestión de siniestros en el territorio, articulando la respuesta comunitaria con los organismos estatales de protección civil.
 
 % ═══════════════════════════════════════════════════════════════════════════════
 \section{Marco Institucional}
@@ -273,8 +291,8 @@ Entre los proyectos más relevantes de la organización para este programa se de
   \item[Meses 6--12: Diseño y gestión de proyectos productivos y turísticos]
     La coordinadora del proyecto trabaja de forma paralela al despliegue técnico en el \textbf{diseño, gestión y hosting de proyectos productivos y turísticos} familiares y comunitarios: identidad digital, páginas web, canales de comunicación con clientes y proveedores (incluyendo integración WhatsApp--MQTT), y sistemas básicos de reserva y comercialización. Este componente forma parte integral de los honorarios de coordinación, ya que la conectividad cobra sentido únicamente si existe una oferta comunitaria organizada capaz de aprovecharla.
 
-  \item[Meses 10--12: Documentación y evaluación]
-    Sistematización de aprendizajes, métricas de uso, informe final. Preparación de la Etapa 2 (Scaling Track).
+  \item[Meses 10--12: Monitoreo, documentación y evaluación]
+    Sistematización de aprendizajes e informe final para el financiador. Recolección y análisis de métricas de uso: número de mensajes enviados por paraje, frecuencia de uso por comunidad, incidentes de emergencia reportados, reservas y ventas generadas a través de la red. Evaluación participativa con las mujeres operadoras y referentes comunitarios sobre el impacto percibido. Identificación de mejoras técnicas y de protocolo para las Etapas 2 y 3. Preparación de la solicitud Scaling Track.
 \end{description}
 
 \subsection{Etapas futuras (referencia)}
@@ -388,6 +406,8 @@ La sostenibilidad del proyecto descansa en tres pilares:
 
   \item[Base institucional] La trayectoria de Fundación exACTa/cheLA garantiza la continuidad institucional del proyecto más allá del período de financiamiento. El modelo de nodo BioCulturas permite integrar nuevas fuentes de financiamiento (Etapas 2 y 3) sobre la base construida.
 
+  \item[Monitoreo y mejora continua] La red Meshtastic genera datos de uso en tiempo real accesibles desde cualquier nodo con conexión a internet: volumen de mensajes, nodos activos, cobertura efectiva. Las mujeres operadoras registran incidencias y el equipo técnico realiza visitas de mantenimiento preventivo cada tres meses. Los datos de uso y las evaluaciones participativas alimentan el proceso de mejora continua y la planificación de las etapas siguientes.
+
   \item[Autogeneración de ingresos] La red habilita un modelo de generación de ingresos propios que financia su mantenimiento a largo plazo. Colectivo Nodo Norte desarrolla y gestiona \textbf{portales web e identidad digital} para los emprendimientos turísticos y productivos de las comunidades, canalizando la comunicación con turistas y consumidores externos —incluyendo la integración con WhatsApp vía MQTT— hacia reservas y ventas concretas. A cambio, el Colectivo percibe una \textbf{comisión por cada reserva o venta concretada}, sin costo fijo para el emprendimiento mientras no haya resultado. Este modelo alinea los incentivos del Colectivo con el éxito económico de las familias: a mayor actividad turística y productiva en el territorio, mayor la capacidad de autofinanciamiento de la red y del equipo que la sostiene. Con un número suficiente de emprendimientos activos, este flujo cubre los costos operativos de la red sin depender de financiamiento externo.
 \end{description}
 
@@ -403,6 +423,8 @@ Al finalizar la Etapa 1:
   \item \textbf{28 nodos fijos} instalados en puntos estratégicos de los cerros, incluyendo gateways MQTT en puntos con acceso a internet
   \item \textbf{7 mujeres operadoras} capacitadas para la gestión autónoma de la red
   \item \textbf{Proyectos productivos y turísticos} de familias y comunidades con presencia digital, canales de comunicación activos y acceso a WhatsApp desde la red \textit{mesh}
+  \item \textbf{Infraestructura de emergencia activa}: red operativa cuando internet y telefonía fallan, habilitando coordinación de rescate y evacuaciones en territorio con riesgo de aludes e inundaciones
+  \item \textbf{Bomberos Voluntarios y Defensa Civil} de Humahuaca integrados como usuarios institucionales con terminales propias y protocolos de emergencia co-diseñados con las comunidades
   \item \textbf{1 vehículo de campo} operativo con movilidad autónoma de combustible fósil
   \item \textbf{Documentación completa} del modelo replicable para otras comunidades andinas
 \end{itemize}
