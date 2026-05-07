@@ -1,0 +1,29 @@
+¿Existe una ubicación precisa donde planea construir o expandir la(s) red(es)?
+
+El proyecto se despliega en siete parajes de la Quebrada de Humahuaca, Jujuy, Argentina: Humahuaca, Chorrillos, Hornaditas, Negra Muerta, Iturbe, Azul Pampa y Tres Cruces, distribuidos a lo largo de 155 km de valle andino entre 2.000 y 3.800 msnm. En cada paraje se instalarán nodos fijos en puntos elevados de los cerros y se distribuirán terminales personales entre los pobladores. El nodo principal de la red estará en la antena de la Radio Municipal de Humahuaca.
+
+
+Describe tu plan para conectar la(s) comunidad(es) a Internet. Especificaciones técnicas.
+
+La red utiliza tecnología Meshtastic sobre radiofrecuencia LoRa (915 MHz, banda ISM libre en Argentina). Se despliegan 28 nodos fijos con panel solar, batería y carcasa IP67 en puntos elevados, y 70 terminales personales Bluetooth para los pobladores. La señal LoRa alcanza 10–30 km en línea de vista, creando cobertura mallada sin internet ni infraestructura centralizada. Donde existe acceso puntual a internet (Starlink o wifi escolar), el nodo actúa como gateway MQTT, extendiendo la conectividad a toda la red e integrando mensajería por WhatsApp. La gestión es autónoma: nodos solares sin mantenimiento diario, operados por mujeres referentes capacitadas en cada paraje.
+
+
+Los tres desplegables ya están correctamente seleccionados según la propuesta:
+
+¿Gestionas la red tú mismo? → Sí ✅
+¿Nueva red o ampliando existente? → Construyendo una nueva red ✅
+¿Múltiples despliegues? → Sí ✅
+
+Describa su relación actual con la comunidad (o comunidades) donde planea implementar este proyecto.
+
+La coordinadora del proyecto fue docente de Tecnología en la Tecnicatura de Desarrollo Indígena del COAJ (Centro de Organizaciones Aborígenes de Jujuy) y en la Tecnicatura de Comunicación Social del IES de Humahuaca, donde formó a muchos de los referentes comunitarios actuales de los siete parajes. Acompañó proyectos productivos en Azul Pampa en el marco de la carrera de Técnico Universitario en Valor Agregado en Proyecto Productivo. En mayo de 2026 se firma el primer convenio formal entre Fundación exACTa y la comunidad de Azul Pampa. El proceso de consulta libre, previa e informada está en curso con cada asamblea según el Convenio 169 OIT.
+
+
+
+Si presenta su solicitud con un socio implementador, describa las funciones y responsabilidades.
+
+Colectivo Nodo Norte (implementación en territorio, coordinación técnica y comunitaria) opera bajo la personería jurídica de Fundación exACTa / cheLA (administración financiera, sponsor fiscal, marco institucional y académico). UCLA REMAP actúa como asesor académico internacional a través de Fabian Wagmister, Director General de cheLA.
+
+Describa proyectos anteriores que su organización haya implementado y que sean relevantes para este programa.
+
+cheLA / Fundación exACTa tiene más de 20 años de proyectos en tecnología comunitaria y territorial. Entre los más relevantes: EduSol (desarrollado por Patricia Vanesa Quiroz en cheLA), programa de educación con Software Libre para escuelas del barrio de Parque Patricios, que formó a docentes y estudiantes en herramientas digitales de acceso abierto. sur@norte@sur, programa de investigación financiado por Latin American Digital Cultures de UCLA, del que emergió la investigación de Fabian Wagmister en Computación Cívica Comunitaria —marco conceptual directo de este proyecto. Experiencia Iberá (2016), primer proyecto en Argentina en usar una red de sensores audiovisuales para una instalación interactiva comunitaria, diseñada con UCLA REMAP y exhibida en Tecnópolis. Las Cuencas Cuentan (2024–2026), residencia de investigación en territorio con comunidades y ambientes hídricos, con apoyo de Metabolic Studio y Fundación Williams.
