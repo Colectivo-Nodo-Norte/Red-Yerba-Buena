@@ -112,7 +112,7 @@
 
 \textbf{Red Yerba Buena} es una red de conectividad \textit{mesh} LoRa (tecnología Meshtastic) diseñada para siete comunidades indígenas de la Quebrada de Humahuaca, provincia de Jujuy, Argentina, donde la telefonía móvil es inexistente debido a la compleja orografía andina.
 
-La solución opera sin infraestructura corporativa, sin costos de mantenimiento recurrentes y sin dependencia de conectividad satelital. Será gestionada y mantenida por mujeres rurales de cada paraje, garantizando la autonomía operativa de la red.
+La solución provee \textbf{comunicación digital autónoma} — mensajería, alertas y coordenadas GPS — sin internet, sin infraestructura corporativa y sin costos de mantenimiento recurrentes. No reemplaza a internet: lo complementa aprovechando los escasos puntos de acceso existentes en el territorio. Será gestionada y mantenida por mujeres rurales de cada paraje, garantizando la autonomía operativa de la red.
 
 El proyecto es implementado por \textbf{Colectivo Nodo Norte} bajo el marco institucional de \textbf{Fundación exACTa / cheLA}, con más de 20 años de experiencia en tecnología comunitaria en América Latina en colaboración con \textbf{UCLA REMAP}.
 
@@ -175,9 +175,11 @@ El proyecto interviene en siete comunidades distribuidas a lo largo de la Quebra
 
 \subsection{Tecnología Meshtastic}
 
-Meshtastic es un protocolo de comunicación de código abierto que opera sobre radiofrecuencia LoRa (\textit{Long Range}). Permite transmitir mensajes de texto, coordenadas GPS y alertas entre dispositivos sin necesidad de internet, telefonía móvil ni infraestructura centralizada.
+Meshtastic es un protocolo de comunicación de código abierto que opera sobre radiofrecuencia LoRa (\textit{Long Range}). \textbf{No es internet}: es una red de mensajería directa entre dispositivos que permite transmitir mensajes de texto, coordenadas GPS y alertas sin necesidad de internet, telefonía móvil ni infraestructura centralizada. Funciona de forma completamente autónoma y permanente, independientemente de si existe o no conectividad a internet en el área.
 
 Cada nodo amplifica y retransmite la señal de sus vecinos, creando una red mallada (\textit{mesh}) que se extiende a lo largo de la cadena montañosa. La señal LoRa puede alcanzar distancias de 10 a 30 km en condiciones de línea de vista, lo que la hace especialmente adecuada para la orografía andina.
+
+\textbf{Resiliencia ante emergencias.} La principal fortaleza de esta tecnología es que \textbf{no depende de ninguna infraestructura externa para funcionar}: si internet cae, si la telefonía móvil falla, si hay un corte de energía en la región, la red Meshtastic sigue operando de forma completamente autónoma gracias a sus nodos solares. Meshtastic fue concebida originalmente para contextos de emergencia, rescate y operaciones en terrenos de orografía compleja —exactamente las condiciones de la Quebrada de Humahuaca, donde los aludes, las crecidas de quebradas y el aislamiento climático son riesgos reales y recurrentes. En una situación de siniestro, esta red puede ser el único canal de comunicación disponible para coordinar evacuaciones, ubicar personas y solicitar asistencia, convirtiéndose en infraestructura crítica de seguridad comunitaria.
 
 \subsection{Puente hacia WhatsApp mediante MQTT}
 
@@ -188,7 +190,7 @@ Esto tiene implicancias concretas para los emprendimientos comunitarios:
 \begin{itemize}
   \item Un turista puede consultar disponibilidad de alojamiento desde su teléfono con señal, y la consulta llega al poblador en el cerro a través de la red \textit{mesh}.
   \item Un emprendimiento puede recibir pedidos o coordinar con proveedores sin moverse del paraje.
-  \item La red entera se beneficia de cada punto de acceso a internet existente, sin que cada hogar deba costear conectividad individual.
+  \item Cuando existe un punto de internet en la zona (Starlink o wifi escolar), la red entera puede beneficiarse de ese acceso puntual a través del gateway MQTT, sin que cada hogar deba costear una conexión individual.
 \end{itemize}
 
 La configuración MQTT es parte del proceso de instalación y capacitación previsto en el plan de trabajo.
@@ -380,7 +382,7 @@ Reserva de contingencia (8,5\%)
 La sostenibilidad del proyecto descansa en tres pilares:
 
 \begin{description}
-  \item[Autonomía técnica] Los nodos Meshtastic son alimentados por energía solar, no requieren mantenimiento diario y operan indefinidamente sin costos recurrentes. Las mujeres operadoras capacitadas pueden resolver las incidencias más comunes sin asistencia externa.
+  \item[Autonomía técnica] Los nodos Meshtastic son alimentados por energía solar, no requieren mantenimiento diario y operan indefinidamente sin costos recurrentes. La red funciona con total independencia de internet, telefonía móvil o energía de red: si cualquiera de estas infraestructuras falla —como ocurre frecuentemente en eventos climáticos extremos en los Andes— la red Meshtastic continúa operando. Las mujeres operadoras capacitadas pueden resolver las incidencias más comunes sin asistencia externa.
 
   \item[Autonomía energética] El vehículo adaptado con gasificador opera con biomasa local (residuos orgánicos secos disponibles en todos los parajes), eliminando la dependencia de combustible fósil para las operaciones de campo.
 
