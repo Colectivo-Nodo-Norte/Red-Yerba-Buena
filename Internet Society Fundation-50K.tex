@@ -14,7 +14,7 @@
 \usepackage{titlesec}
 \usepackage{fancyhdr}
 \usepackage{graphicx}
-\usepackage[activate=false]{microtype}
+\usepackage{microtype}
 \usepackage{parskip}
 
 % ─── Geometría ───────────────────────────────────────────────────────────────
@@ -112,7 +112,7 @@
 
 \textbf{Red Yerba Buena} es una red de conectividad \textit{mesh} LoRa (tecnología Meshtastic) diseñada para siete comunidades indígenas de la Quebrada de Humahuaca, provincia de Jujuy, Argentina, donde la telefonía móvil es inexistente debido a la compleja orografía andina.
 
-La solución provee \textbf{comunicación digital autónoma} — mensajería, alertas y coordenadas GPS — sin internet, sin infraestructura corporativa y sin costos de mantenimiento recurrentes. No reemplaza a internet: lo complementa aprovechando los escasos puntos de acceso existentes en el territorio. Será gestionada y mantenida por mujeres rurales de cada paraje, garantizando la autonomía operativa de la red.
+La solución opera sin infraestructura corporativa, sin costos de mantenimiento recurrentes y sin dependencia de conectividad satelital. Será gestionada y mantenida por mujeres rurales de cada paraje, garantizando la autonomía operativa de la red.
 
 El proyecto es implementado por \textbf{Colectivo Nodo Norte} bajo el marco institucional de \textbf{Fundación exACTa / cheLA}, con más de 20 años de experiencia en tecnología comunitaria en América Latina en colaboración con \textbf{UCLA REMAP}.
 
@@ -136,14 +136,6 @@ La orografía andina imposibilita el despliegue de infraestructura de telefonía
   \item Exclusión de oportunidades económicas digitales
   \item Éxodo de jóvenes hacia centros urbanos por falta de horizontes locales
 \end{itemize}
-
-\subsection{Conectividad de emergencia: Starlink y la escuela como excepción}
-
-En los escasos casos en que algún emprendimiento productivo o turístico tiene acceso a internet, este se obtiene exclusivamente mediante la contratación individual de \textbf{Starlink} —a un costo mensual prohibitivo para la economía rural andina— o mediante el desplazamiento físico hasta la escuela más cercana, que en algunos parajes cuenta con conexión \textit{wifi}. En ambos casos se trata de un acceso fragmentado, costoso e impracticable para la comunicación cotidiana con clientes y proveedores.
-
-Esta situación tiene consecuencias directas sobre la viabilidad de los emprendimientos familiares y comunitarios: la imposibilidad de mantener comunicación fluida con turistas, agencias y mercados impide la consolidación de cualquier actividad económica sostenible en el territorio.
-
-Meshtastic resuelve este problema de dos maneras complementarias: por un lado, provee comunicación autónoma entre parajes \textit{sin necesidad de internet}; por otro, cuando existe un nodo con acceso a internet (Starlink o escuela), ese nodo funciona como \textbf{gateway MQTT} y extiende la conectividad hacia aplicaciones externas como \textbf{WhatsApp} (vía protocolo MQTT-bridge), permitiendo que toda la red se beneficie de ese acceso puntual sin que cada hogar deba costear la conexión de forma individual.
 
 \subsection{El contexto humano}
 
@@ -175,31 +167,9 @@ El proyecto interviene en siete comunidades distribuidas a lo largo de la Quebra
 
 \subsection{Tecnología Meshtastic}
 
-Meshtastic es un protocolo de comunicación de código abierto que opera sobre radiofrecuencia LoRa (\textit{Long Range}). \textbf{No es internet}: es una red de mensajería directa entre dispositivos que permite transmitir mensajes de texto, coordenadas GPS y alertas sin necesidad de internet, telefonía móvil ni infraestructura centralizada. Funciona de forma completamente autónoma y permanente, independientemente de si existe o no conectividad a internet en el área.
+Meshtastic es un protocolo de comunicación de código abierto que opera sobre radiofrecuencia LoRa (\textit{Long Range}). Permite transmitir mensajes de texto, coordenadas GPS y alertas entre dispositivos sin necesidad de internet, telefonía móvil ni infraestructura centralizada.
 
 Cada nodo amplifica y retransmite la señal de sus vecinos, creando una red mallada (\textit{mesh}) que se extiende a lo largo de la cadena montañosa. La señal LoRa puede alcanzar distancias de 10 a 30 km en condiciones de línea de vista, lo que la hace especialmente adecuada para la orografía andina.
-
-\textbf{Resiliencia ante emergencias.} La principal fortaleza de esta tecnología es que \textbf{no depende de ninguna infraestructura externa para funcionar}: si internet cae, si la telefonía móvil falla, si hay un corte de energía en la región, la red Meshtastic sigue operando de forma completamente autónoma gracias a sus nodos solares. Meshtastic fue concebida originalmente para contextos de emergencia, rescate y operaciones en terrenos de orografía compleja —exactamente las condiciones de la Quebrada de Humahuaca, donde los aludes, las crecidas de quebradas y el aislamiento climático son riesgos reales y recurrentes. En una situación de siniestro, esta red puede ser el único canal de comunicación disponible para coordinar evacuaciones, ubicar personas y solicitar asistencia, convirtiéndose en infraestructura crítica de seguridad comunitaria. El proyecto contempla la integración formal de los \textbf{Bomberos Voluntarios} y de \textbf{Defensa Civil} de la Quebrada de Humahuaca como usuarios institucionales de la red, dotándolos de terminales y protocolos de comunicación específicos para situaciones de emergencia. Esta integración multiplica el valor de la infraestructura: la misma red que conecta a una familia en el cerro con un turista en la ciudad puede activar una cadena de rescate coordinada entre parajes, bomberos y defensa civil en minutos.
-
-\subsection{Puente hacia WhatsApp mediante MQTT}
-
-Una de las capacidades más relevantes de Meshtastic para el contexto productivo y turístico de las comunidades es su compatibilidad con el protocolo \textbf{MQTT} (\textit{Message Queuing Telemetry Transport}). Cuando uno o más nodos de la red tienen acceso a internet —ya sea por Starlink, conexión escolar u otra fuente puntual— ese nodo actúa como \textbf{gateway} y publica los mensajes de la red \textit{mesh} en un servidor MQTT. Desde allí, mediante integraciones disponibles, los mensajes pueden entregarse en \textbf{grupos de WhatsApp} accesibles desde cualquier celular con señal convencional.
-
-Esto tiene implicancias concretas para los emprendimientos comunitarios:
-
-\begin{itemize}
-  \item Un turista puede consultar disponibilidad de alojamiento desde su teléfono con señal, y la consulta llega al poblador en el cerro a través de la red \textit{mesh}.
-  \item Un emprendimiento puede recibir pedidos o coordinar con proveedores sin moverse del paraje.
-  \item Cuando existe un punto de internet en la zona (Starlink o wifi escolar), la red entera puede beneficiarse de ese acceso puntual a través del gateway MQTT, sin que cada hogar deba costear una conexión individual.
-\end{itemize}
-
-La configuración MQTT es parte del proceso de instalación y capacitación previsto en el plan de trabajo.
-
-\subsection{Antecedentes de redes similares}
-
-Red Yerba Buena no parte de cero. Meshtastic cuenta con una comunidad global activa y casos de uso documentados en contextos análogos al de la Quebrada de Humahuaca. En Argentina, la comunidad \textbf{Mesh Argentina} (mesharg.com.ar) nuclea a usuarios y técnicos que despliegan nodos en zonas rurales y de montaña sin cobertura celular, y es la referencia local para capacitación y soporte técnico. La regulación argentina es explícita: la \textbf{Resolución ENACOM 581/2018} habilita la banda AU915--928 MHz para uso libre, que es la banda que utiliza Meshtastic en el país.
-
-A nivel internacional, el uso de redes Meshtastic en emergencias ha sido validado en eventos reales: durante los incendios de Los Ángeles de enero de 2025, redes Meshtastic comunitarias preexistentes proveyeron comunicación cuando las redes celulares colapsaron. El caso de \textbf{WiMesh} —red mesh desplegada en una aldea rural de montaña en Pakistán, documentada en literatura académica— demuestra la viabilidad técnica y social de este modelo en territorios con orografía compleja, baja densidad poblacional y ausencia de infraestructura, condiciones idénticas a las de la Quebrada de Humahuaca.
 
 \subsection{Arquitectura de la red}
 
@@ -208,7 +178,7 @@ Cada comunidad contará con dos tipos de dispositivos:
 \begin{description}
   \item[Terminales personales] Dispositivos compactos (USD 30 c/u) que los pobladores llevan consigo y conectan a su teléfono celular mediante Bluetooth. Permiten enviar y recibir mensajes sin señal de celular ni internet.
 
-  \item[Nodos fijos en altura] Equipos con carcasa de protección IP67, panel solar y batería (USD 90 c/u) instalados en puntos elevados de los cerros. Garantizan la cobertura y el alcance de la red entre parajes. Los nodos ubicados en puntos con acceso a internet (escuelas, parajes con Starlink) funcionan además como gateways MQTT.
+  \item[Nodos fijos en altura] Equipos con carcasa de protección IP67, panel solar y batería (USD 90 c/u) instalados en puntos elevados de los cerros. Garantizan la cobertura y el alcance de la red entre parajes.
 \end{description}
 
 \subsection{Infraestructura de movilidad autónoma}
@@ -217,49 +187,21 @@ El trabajo de campo en la Quebrada requiere movilidad en un territorio donde el 
 
 Este sistema convierte residuos orgánicos secos en gas combustible (\textit{gasura}), permitiendo operar el vehículo sin gasolina. Los gases de escape presentan una pureza superior al aire atmosférico, con aporte de oxígeno al entorno. La capacitación e instalación se realizará directamente con el Ing. Ramos en su taller de Córdoba.
 
-\subsection{Gestión comunitaria por mujeres}
+\subsection{Gestión comunitaria por mujeres y voluntarios}
 
-La red será operada y mantenida por mujeres rurales de cada paraje. El diseño del sistema prioriza la simplicidad operativa: los nodos fijos son autónomos (panel solar, sin intervención diaria) y las terminales personales funcionan como cualquier dispositivo Bluetooth.
+La red será operada y mantenida por un equipo comunitario de \textbf{mínimo 3 personas por comunidad}: una \textbf{mujer referente} que lidera la gestión de la red en su paraje, y al menos dos \textbf{voluntarios comunitarios} que la acompañan en el mantenimiento, la distribución de terminales y la asistencia a vecinos con menor alfabetización digital. Este modelo distribuye la responsabilidad operativa y garantiza la continuidad de la red ante ausencias o imprevistos.
 
-% ═══════════════════════════════════════════════════════════════════════════════
-\section{Marco Regulatorio}
-% ═══════════════════════════════════════════════════════════════════════════════
-
-\subsection{Espectro radioeléctrico}
-
-La tecnología LoRa opera en la banda de \textbf{915 MHz}, clasificada como banda ISM (\textit{Industrial, Scientific and Medical}) de uso libre en Argentina según las regulaciones de la \textbf{ENACOM} (Ente Nacional de Comunicaciones). Esta banda no requiere licencia de operación para potencias de transmisión en los rangos utilizados por Meshtastic (hasta 1W), lo que elimina barreras regulatorias para el despliegue de la red.
-
-\subsection{Derechos de las comunidades indígenas}
-
-El proyecto opera dentro del marco constitucional argentino que reconoce los derechos de los pueblos originarios (Art. 75 inc. 17, CN) y el \textbf{Convenio 169 de la OIT}, incorporado al ordenamiento jurídico nacional. El proceso de consulta libre, previa e informada en curso con cada asamblea comunitaria es el mecanismo de cumplimiento de este marco normativo. Los convenios firmados entre Fundación exACTa y cada comunidad formalizan los acuerdos de co-gestión y propiedad comunitaria de la infraestructura desplegada en cada paraje.
-
-\subsection{Personería jurídica y gestión de fondos}
-
-\textbf{Fundación exACTa} está debidamente constituida bajo la normativa argentina de fundaciones (Ley 19.836), con CUIT 30-70870222-2, y cuenta con experiencia acreditada en la gestión de fondos internacionales en colaboración con UCLA REMAP. Es la entidad responsable de la recepción, administración y rendición de los fondos del grant.
-
-\subsection{Fondo de Servicio Universal}
-
-Argentina cuenta con el \textbf{Fondo Fiduciario del Servicio Universal (FFSU)}, administrado por ENACOM, cuyo mandato es garantizar el acceso a las comunicaciones en zonas donde el mercado no provee cobertura —exactamente la situación de los parajes de la Quebrada de Humahuaca. En las Etapas 2 y 3 del proyecto se explorará la articulación con el FFSU como fuente de financiamiento complementario, consolidando el modelo de Red Yerba Buena dentro del marco de política pública de conectividad universal de Argentina.
+El diseño del sistema prioriza la simplicidad operativa: los nodos fijos son autónomos (panel solar, sin intervención diaria) y las terminales personales se conectan al teléfono celular vía Bluetooth mediante la aplicación Meshtastic, disponible gratuitamente en Google Play Store y Apple App Store.
 
 % ═══════════════════════════════════════════════════════════════════════════════
 \section{Participación Comunitaria}
 % ═══════════════════════════════════════════════════════════════════════════════
 
-Colectivo Nodo Norte cuenta con vínculos comunitarios profundos y de larga data en el territorio. La coordinadora del proyecto, Patricia Vanesa Quiroz, fue \textbf{docente de Tecnología en la Tecnicatura de Desarrollo Indígena} del \textbf{COAJ} (Centro de Organizaciones Aborígenes de Jujuy), institución que nuclea a las principales organizaciones indígenas de la provincia. Fue también docente de diseño gráfico y video en la \textbf{Tecnicatura de Comunicación Social del IES de Humahuaca}, y acompañó proyectos productivos comunitarios ---entre ellos la producción de harina de habas en \textbf{Azul Pampa}--- en el marco de la carrera de Técnico Universitario en Valor Agregado en Proyecto Productivo.
+Colectivo Nodo Norte cuenta con vínculos familiares establecidos en cada uno de los siete parajes identificados y está transitando el proceso formal de \textbf{consulta libre, previa e informada} con cada asamblea comunitaria, respetando el Convenio 169 de la OIT incorporado a la Constitución Argentina (Art. 75 inc. 17).
 
-Como resultado de esta trayectoria docente, muchos de los \textbf{referentes comunitarios actuales de los siete parajes son ex alumnos directos} de la coordinadora, lo que garantiza relaciones de confianza preexistentes, conocimiento mutuo del territorio y comprensión compartida de las necesidades tecnológicas de las comunidades.
+Este proceso es inherentemente participativo y no puede acelerarse sin comprometer la soberanía comunitaria. El consentimiento familiar en territorio existe; el proceso asambleario está en curso. La metodología \textbf{A.B.R.A.} (Acciones Biosistémicas de Resonancia Aplicada) que guía el trabajo del Colectivo prioriza el co-diseño con la comunidad antes de cualquier despliegue técnico.
 
-El proyecto está transitando el proceso formal de \textbf{consulta libre, previa e informada} con cada asamblea comunitaria, respetando el Convenio 169 de la OIT incorporado a la Constitución Argentina (Art. 75 inc. 17). Este proceso es inherentemente participativo y no puede acelerarse sin comprometer la soberanía comunitaria. Como primer resultado concreto, \textbf{en mayo de 2026 se firma el convenio entre Fundación exACTa y la comunidad de Azul Pampa}, estableciendo el marco formal de colaboración para el despliegue de la red en ese paraje.
-
-La metodología \textbf{A.B.R.A.} (Acciones Biosistémicas de Resonancia Aplicada) que guía el trabajo del Colectivo prioriza el co-diseño con la comunidad antes de cualquier despliegue técnico. La red será co-diseñada, implementada y mantenida por las propias comunidades, garantizando la sostenibilidad del proyecto más allá del período de financiamiento.
-
-Un principio central del proyecto es la \textbf{propiedad comunitaria de la infraestructura}: los nodos instalados en cada paraje son propiedad de la comunidad respectiva, no de Colectivo Nodo Norte ni de Fundación exACTa. Los convenios firmados con cada asamblea establecen explícitamente este punto. Las comunidades son simultáneamente usuarias, operadoras y dueñas de su red —exactamente el modelo de gobernanza que define a una red comunitaria genuina.
-
-\textbf{Inclusión y mediación comunitaria.} Las mujeres referentes capacitadas en cada paraje no cumplen únicamente un rol técnico: son mediadoras entre la tecnología y el conjunto de la comunidad, atentas a las necesidades de adultos mayores, niños, personas con menor alfabetización digital y cualquier miembro que requiera acompañamiento para incorporarse al uso de la red. Su rol garantiza que la conectividad no beneficie solo a quienes ya tienen habilidades digitales, sino que alcance progresivamente a toda la comunidad.
-
-\textbf{Solidaridad inter-paraje.} Una dimensión central y frecuentemente invisible del proyecto es que los siete parajes de la Quebrada están hoy \textit{incomunicados entre sí}: no existe ningún canal de comunicación directa entre comunidades vecinas que no implique desplazamiento físico. Red Yerba Buena crea por primera vez un tejido de comunicación horizontal entre parajes —no solo hacia afuera sino entre sí— habilitando formas de coordinación, ayuda mutua y solidaridad territorial que actualmente no son posibles. Un aviso de lluvia intensa en Tres Cruces puede llegar a Iturbe antes de que el agua baje; una familia en Negra Muerta puede comunicar una emergencia a sus vecinos de Chorrillos sin que nadie deba subir a un cerro o recorrer kilómetros.
-
-Además de las comunidades indígenas, el proyecto incorpora como \textbf{actores institucionales} a los \textbf{Bomberos Voluntarios de Humahuaca} y a \textbf{Defensa Civil} del departamento, quienes participarán en el diseño de los protocolos de emergencia de la red y recibirán capacitación en el uso del sistema. Su involucramiento garantiza que la red funcione como infraestructura oficial de gestión de siniestros en el territorio, articulando la respuesta comunitaria con los organismos estatales de protección civil.
+La red será co-diseñada, implementada y mantenida por las propias comunidades, garantizando la sostenibilidad del proyecto más allá del período de financiamiento.
 
 % ═══════════════════════════════════════════════════════════════════════════════
 \section{Marco Institucional}
@@ -269,23 +211,25 @@ Además de las comunidades indígenas, el proyecto incorpora como \textbf{actore
 
 Laboratorio de innovación social y soberanía tecnológica radicado en la Quebrada de Humahuaca. Opera bajo el marco de acción A.B.R.A. (Acciones Biosistémicas de Resonancia Aplicada), un enfoque integral que busca el desarrollo humano consciente mediante el equilibrio entre el ser y su entorno. Se dedica al diseño e implementación de Tecnologías Situadas para revertir el vaciamiento de los territorios rurales, integrando saberes ancestrales con herramientas contemporáneas.
 
-En el marco conceptual de redes comunitarias, Colectivo Nodo Norte opera como \textbf{organización meso}: articula el nivel \textit{micro} (las familias y comunidades usuarias y dueñas de la red) con el nivel \textit{macro} (Fundación exACTa/cheLA como entidad institucional, ENACOM como regulador, y UCLA REMAP como referente académico internacional). Esta posición meso es la que permite traducir las necesidades tecnológicas del territorio en proyectos viables, y conectar la experiencia comunitaria local con recursos y conocimientos globales.
-
 \subsection{Fundación exACTa / cheLA}
 
 \textbf{Fundación exACTa} es una organización sin fines de lucro con sede en Buenos Aires, Argentina, fundada en 2003 en colaboración con \textbf{UCLA REMAP} y el UCLA Program on Digital Cultures. A través de \textbf{cheLA} (Centro Hipermediático Experimental Latinoamericano), desarrolla investigación y práctica en la intersección del arte, la ciencia y la tecnología con impacto en comunidades latinoamericanas.
 
 cheLA se organiza en nodos temáticos de investigación y creación colectiva. Colectivo Nodo Norte actúa como \textbf{nodo BioCulturas} de esta red, bajo cuyo marco se presenta este proyecto.
 
-Entre los proyectos más relevantes de la organización para este programa se destacan: \textbf{EduSol}, programa de educación con Software Libre para escuelas del barrio de Parque Patricios (donde se ubica cheLA), desarrollado por Patricia Vanesa Quiroz, que formó a docentes y estudiantes en herramientas digitales de acceso abierto. \textbf{sur@norte@sur}, programa de investigación financiado por Latin American Digital Cultures de UCLA, del que emergió la investigación de Fabian Wagmister en \textit{Computación Cívica Comunitaria} (\textit{Community Cultural Computing}), marco conceptual directo del presente proyecto. \textbf{Experiencia Iberá} (2016), primer proyecto en Argentina en usar una red de sensores audiovisuales para una instalación interactiva comunitaria, diseñada con UCLA REMAP y exhibida en Tecnópolis ante decenas de miles de visitantes. \textbf{Las Cuencas Cuentan} (2024--2026), residencia de investigación y creación en ambientes hídricos en territorio, con apoyo de Metabolic Studio y Fundación Williams.
-
 \subsection{Responsable del proyecto}
 
-\textbf{Patricia Vanesa Quiroz} es \textbf{Diseñadora de Imagen y Sonido} egresada de la Facultad de Arquitectura, Diseño y Urbanismo de la Universidad de Buenos Aires (FADU-UBA). Fue coordinadora de cheLA entre 2004 y 2007, período en que se consolidó la alianza institucional entre Fundación exACTa y UCLA REMAP, mediante proyectos de Computación Cultural Comunitaria. Durante ese período desarrolló \textbf{EduSol}, programa de educación con Software Libre para escuelas de Parque Patricios, e integró el equipo del programa de investigación \textbf{sur@norte@sur} (Latin American Digital Cultures, UCLA). Su formación en diseño y su trayectoria de 20 años en la intersección de tecnología comunitaria, cultura y territorio en América Latina son la base operativa de este proyecto.
+\textbf{Patricia Vanesa Quiroz} es \textbf{Diseñadora de Imagen y Sonido}, egresada de la Facultad de Arquitectura, Diseño y Urbanismo de la Universidad de Buenos Aires (FADU-UBA).
+
+Fue coordinadora de cheLA entre 2004 y 2007, período en que desarrolló \textbf{EduSol} (programa de educación con Software Libre para escuelas de Parque Patricios) e integró el equipo del programa de investigación \textbf{sur@norte@sur} (Latin American Digital Cultures, UCLA). Fue docente de \textbf{Diseño Gráfico y Video} en la \textbf{Tecnicatura de Comunicación Social con Orientación al Desarrollo Local del IES de Humahuaca}, y docente de Tecnología en la \textbf{Tecnicatura de Desarrollo Indígena del COAJ} (Centro de Organizaciones Aborígenes de Jujuy).
+
+Desde 2007 hasta la actualidad ejerce de forma independiente como \textbf{asesora, diseñadora web y desarrolladora de proyectos de identidad digital y comunicación}, con foco en organizaciones culturales, sociales y emprendimientos territoriales --- trabajo documentado en \href{https://vanesaquiroz.com}{vanesaquiroz.com}. Esta trayectoria de casi 20 años en diseño web e identidad digital es la base directa del componente de portales comunitarios, e-commerce rural y comunicación turística que forma parte integral de este proyecto.
+
+Reside en Tres Cruces, Quebrada de Humahuaca, y mantiene vínculos de larga data con las comunidades del territorio.
 
 \subsection{Asesor académico}
 
-\textbf{Fabian Wagmister}, Profesor y Director del Departamento de Cine, Televisión y Medios Digitales de la Escuela de Teatro, Cine y Televisión de la \textbf{UCLA}, Director General de cheLA y fundador de \textbf{UCLA REMAP}, actúa como asesor estratégico del proyecto. Su investigación en \textit{Community Cultural Computing} y su colaboración activa con comunidades latinoamericanas durante más de dos décadas proveen el marco conceptual y académico de la iniciativa.
+\textbf{Fabian Wagmister}, Director General de cheLA y fundador de UCLA REMAP, actúa como asesor estratégico del proyecto. Su trabajo en \textit{Cultural Civic Computing} y su colaboración activa con comunidades latinoamericanas proveen el marco conceptual y académico de la iniciativa.
 
 % ═══════════════════════════════════════════════════════════════════════════════
 \section{Plan de Trabajo}
@@ -298,26 +242,23 @@ Entre los proyectos más relevantes de la organización para este programa se de
     Adquisición del vehículo. Viaje a Córdoba con el instalador para capacitación e instalación del gasificador con el Ing. Edmundo Ramos. Compra de hardware Meshtastic (terminales y nodos).
 
   \item[Meses 2--3: Capacitación técnica]
-    Visita del técnico de Meshtastic Argentina para capacitación en instalación, configuración y mantenimiento de nodos, incluyendo la configuración de gateways MQTT para los puntos con acceso a internet. Participan la coordinadora, el instalador y referentes comunitarios.
+    Visita del técnico de Meshtastic Argentina para capacitación en instalación, configuración y mantenimiento de nodos. Participan la coordinadora, el instalador y referentes comunitarios.
 
   \item[Meses 3--10: Despliegue por comunidades]
-    Instalación progresiva en las siete comunidades. Dos fines de semana por mes de trabajo de campo. Proceso paralelo de consulta comunitaria y co-diseño de protocolos de uso. Relevamiento de puntos con Starlink o wifi escolar para configuración de gateways MQTT.
+    Instalación progresiva en las siete comunidades. Dos fines de semana por mes de trabajo de campo. Proceso paralelo de consulta comunitaria y co-diseño de protocolos de uso.
 
-  \item[Meses 6--12: Capacitación a mujeres operadoras]
-    Formación de referentes femeninas en cada paraje para la gestión autónoma de la red. Monitoreo de uso y ajuste de protocolos.
+  \item[Meses 6--12: Capacitación a equipos comunitarios]
+    Formación de la mujer referente y mínimo dos voluntarios por comunidad (mínimo 21 personas en total) para la gestión autónoma de la red. Monitoreo de uso y ajuste de protocolos.
 
-  \item[Meses 6--12: Diseño y gestión de proyectos productivos y turísticos]
-    La coordinadora del proyecto trabaja de forma paralela al despliegue técnico en el \textbf{diseño, gestión y hosting de proyectos productivos y turísticos} familiares y comunitarios: identidad digital, páginas web, canales de comunicación con clientes y proveedores (incluyendo integración WhatsApp--MQTT), y sistemas básicos de reserva y comercialización. Este componente forma parte integral de los honorarios de coordinación, ya que la conectividad cobra sentido únicamente si existe una oferta comunitaria organizada capaz de aprovecharla.
-
-  \item[Meses 10--12: Monitoreo, documentación y evaluación]
-    Sistematización de aprendizajes e informe final para el financiador. Recolección y análisis de métricas de uso: número de mensajes enviados por paraje, frecuencia de uso por comunidad, incidentes de emergencia reportados, reservas y ventas generadas a través de la red. Evaluación participativa con las mujeres operadoras y referentes comunitarios sobre el impacto percibido. Identificación de mejoras técnicas y de protocolo para las Etapas 2 y 3. Preparación de la solicitud Scaling Track.
+  \item[Meses 10--12: Documentación y evaluación]
+    Sistematización de aprendizajes, métricas de uso, informe final. Preparación de la Etapa 2 (Scaling Track).
 \end{description}
 
 \subsection{Etapas futuras (referencia)}
 
 \begin{description}
-  \item[Etapa 2 --- USD 100.000] Extensión a comunidades adicionales de la Quebrada, Puna y Valles jujeños y consolidación institucional del Colectivo en Jujuy.
-  \item[Etapa 3 --- USD 100.000] Replicación del modelo en otras regiones andinas de Argentina.
+  \item[Etapa 2 --- USD 100.000] Extensión a comunidades adicionales de la Puna jujeña y consolidación institucional del Colectivo en Jujuy.
+  \item[Etapa 3 --- USD 100.000] Replicación del modelo en otras regiones andinas de Argentina, Bolivia y Perú.
 \end{description}
 
 % ═══════════════════════════════════════════════════════════════════════════════
@@ -375,14 +316,8 @@ Traslados y viáticos (coordinadora + instalador)
 \multicolumn{3}{l}{\textbf{Recursos humanos}} \\
 Coordinación del proyecto (12 meses)
   & Patricia Vanesa Quiroz & 18.000 \\
-\multicolumn{3}{l}{\small\color{darkgray}\itshape
-  \quad Incluye: dirección técnica y comunitaria · diseño, gestión} \\
-\multicolumn{3}{l}{\small\color{darkgray}\itshape
-  \quad y hosting de proyectos productivos y turísticos · integración} \\
-\multicolumn{3}{l}{\small\color{darkgray}\itshape
-  \quad WhatsApp--MQTT · identidad digital de emprendimientos} \\
-José Ruiz --- instalador en campo (24 fines de semana + viáticos)
-  & Técnico local, Colectivo Nodo Norte & 8.640 \\
+Instalador en campo (24 fines de semana + viáticos)
+  & Técnico local & 8.640 \\
 \midrule
 
 \multicolumn{3}{l}{\textbf{Administración}} \\
@@ -407,7 +342,6 @@ Reserva de contingencia (8,5\%)
   \item Los planos del gasificador son de código abierto y descarga gratuita (\href{https://autoabasura.com}{autoabasura.com}).
   \item El hospedaje durante la capacitación en campo es provisto por la red comunitaria sin costo.
   \item Los honorarios del instalador incluyen viáticos de traslado entre los siete parajes.
-  \item Los honorarios de coordinación incluyen el diseño, gestión y hosting de proyectos productivos y turísticos comunitarios, la configuración del bridge WhatsApp--MQTT y la identidad digital de los emprendimientos. La coordinadora es Diseñadora de Imagen y Sonido (FADU-UBA), formación que sustenta directamente este componente. Este trabajo es inseparable de la infraestructura técnica: la red cobra valor cuando existe una oferta organizada y visualmente comunicada capaz de aprovecharla.
   \item El porcentaje de imprevistos refleja la complejidad logística del trabajo en alta montaña andina.
 \end{itemize}
 
@@ -418,15 +352,11 @@ Reserva de contingencia (8,5\%)
 La sostenibilidad del proyecto descansa en tres pilares:
 
 \begin{description}
-  \item[Autonomía técnica] Los nodos Meshtastic son alimentados por energía solar, no requieren mantenimiento diario y operan indefinidamente sin costos recurrentes. La red funciona con total independencia de internet, telefonía móvil o energía de red: si cualquiera de estas infraestructuras falla —como ocurre frecuentemente en eventos climáticos extremos en los Andes— la red Meshtastic continúa operando. Las mujeres operadoras capacitadas pueden resolver las incidencias más comunes sin asistencia externa.
+  \item[Autonomía técnica] Los nodos Meshtastic son alimentados por energía solar, no requieren mantenimiento diario y operan indefinidamente sin costos recurrentes. Las mujeres operadoras capacitadas pueden resolver las incidencias más comunes sin asistencia externa.
 
   \item[Autonomía energética] El vehículo adaptado con gasificador opera con biomasa local (residuos orgánicos secos disponibles en todos los parajes), eliminando la dependencia de combustible fósil para las operaciones de campo.
 
   \item[Base institucional] La trayectoria de Fundación exACTa/cheLA garantiza la continuidad institucional del proyecto más allá del período de financiamiento. El modelo de nodo BioCulturas permite integrar nuevas fuentes de financiamiento (Etapas 2 y 3) sobre la base construida.
-
-  \item[Monitoreo y mejora continua] La red Meshtastic genera datos de uso en tiempo real accesibles desde cualquier nodo con conexión a internet: volumen de mensajes, nodos activos, cobertura efectiva. Las mujeres operadoras registran incidencias y el equipo técnico realiza visitas de mantenimiento preventivo cada tres meses. Los datos de uso y las evaluaciones participativas alimentan el proceso de mejora continua y la planificación de las etapas siguientes.
-
-  \item[Autogeneración de ingresos] La red habilita un modelo de generación de ingresos propios que financia su mantenimiento a largo plazo. Colectivo Nodo Norte desarrolla y gestiona \textbf{portales web e identidad digital} para los emprendimientos turísticos y productivos de las comunidades, canalizando la comunicación con turistas y consumidores externos —incluyendo la integración con WhatsApp vía MQTT— hacia reservas y ventas concretas. A cambio, el Colectivo percibe una \textbf{comisión por cada reserva o venta concretada}, sin costo fijo para el emprendimiento mientras no haya resultado. Este modelo alinea los incentivos del Colectivo con el éxito económico de las familias: a mayor actividad turística y productiva en el territorio, mayor la capacidad de autofinanciamiento de la red y del equipo que la sostiene. Con un número suficiente de emprendimientos activos, este flujo cubre los costos operativos de la red sin depender de financiamiento externo.
 \end{description}
 
 % ═══════════════════════════════════════════════════════════════════════════════
@@ -438,13 +368,11 @@ Al finalizar la Etapa 1:
 \begin{itemize}
   \item \textbf{700 personas} con acceso a comunicación digital en 7 comunidades previamente aisladas
   \item \textbf{70 terminales personales} distribuidas, con prioridad a mujeres y familias con menores
-  \item \textbf{28 nodos fijos} instalados en puntos estratégicos de los cerros, incluyendo gateways MQTT en puntos con acceso a internet
-  \item \textbf{7 mujeres operadoras} capacitadas para la gestión autónoma de la red
-  \item \textbf{Proyectos productivos y turísticos} de familias y comunidades con presencia digital, canales de comunicación activos y acceso a WhatsApp desde la red \textit{mesh}
-  \item \textbf{Infraestructura de emergencia activa}: red operativa cuando internet y telefonía fallan, habilitando coordinación de rescate y evacuaciones en territorio con riesgo de aludes e inundaciones
-  \item \textbf{Bomberos Voluntarios y Defensa Civil} de Humahuaca integrados como usuarios institucionales con terminales propias y protocolos de emergencia co-diseñados con las comunidades
+  \item \textbf{28 nodos fijos} instalados en puntos estratégicos de los cerros
+  \item \textbf{Mínimo 21 personas capacitadas} (1 mujer referente + 2 voluntarios por comunidad × 7 comunidades) para la gestión autónoma de la red
   \item \textbf{1 vehículo de campo} operativo con movilidad autónoma de combustible fósil
   \item \textbf{Documentación completa} del modelo replicable para otras comunidades andinas
+
 \end{itemize}
 
 % ═══════════════════════════════════════════════════════════════════════════════
@@ -452,17 +380,17 @@ Al finalizar la Etapa 1:
 % ═══════════════════════════════════════════════════════════════════════════════
 
 \begin{description}
-  \item[Patricia Vanesa Quiroz] Coordinadora del proyecto. \textbf{Diseñadora de Imagen y Sonido}, FADU-UBA. Ex coordinadora de cheLA (2004--2007), período en que desarrolló \textbf{EduSol} (programa de educación con Software Libre para escuelas de Parque Patricios) e integró el programa de investigación \textbf{sur@norte@sur} (Latin American Digital Cultures, UCLA). 20 años de trayectoria en tecnología comunitaria y cultura en América Latina. Radicada en Tres Cruces, Quebrada de Humahuaca. Fue docente de Tecnología en la \textbf{Tecnicatura de Desarrollo Indígena del COAJ} (Centro de Organizaciones Aborígenes de Jujuy) y docente de diseño gráfico y video en la \textbf{Tecnicatura de Comunicación Social del IES de Humahuaca}, donde formó a muchos de los referentes comunitarios actuales de los parajes involucrados en el proyecto. Acompañó proyectos productivos en Azul Pampa en el marco de la carrera de Técnico Universitario en Valor Agregado en Proyecto Productivo. Responsable del diseño, gestión y hosting de los proyectos productivos y turísticos familiares y comunitarios que la red habilita, incluyendo identidad digital, integración WhatsApp--MQTT y sistemas de comunicación con el exterior.
+  \item[Patricia Vanesa Quiroz] Coordinadora del proyecto. \textbf{Diseñadora de Imagen y Sonido}, FADU-UBA. Ex coordinadora de cheLA (2004--2007). Docente de \textbf{Diseño Gráfico y Video} en la Tecnicatura de Comunicación Social con Orientación al Desarrollo Local (IES Humahuaca) y de Tecnología en la Tecnicatura de Desarrollo Indígena (COAJ). Desde 2007 ejerce de forma independiente como asesora, diseñadora web y desarrolladora de identidad digital --- \href{https://vanesaquiroz.com}{vanesaquiroz.com}. Radicada en Tres Cruces, Quebrada de Humahuaca.
 
-  \item[Fabian Wagmister] Asesor estratégico. Profesor y Director del Departamento de Cine, Televisión y Medios Digitales, Escuela de Teatro, Cine y Televisión, UCLA. Director General de cheLA y fundador de UCLA REMAP. Investigador en \textit{Community Cultural Computing} y tecnología para el empoderamiento comunitario en América Latina.
+  \item[Fabian Wagmister] Asesor estratégico. Director General de cheLA. Fundador de UCLA REMAP. Especialista en \textit{Cultural Civic Computing} y tecnología para el empoderamiento cívico en comunidades latinoamericanas.
 
   \item[Negra Xue] Coordinadora del nodo BioCulturas de cheLA. Enlace institucional entre el proyecto y la red cheLA/Fundación exACTa.
 
   \item[Ing. Edmundo Ramos] Asesor técnico en movilidad. Creador de la tecnología autoabasura.com. Responsable de la instalación y transferencia de conocimiento del gasificador de biomasa.
 
-  \item[Técnico Meshtastic Argentina] Por definir. Responsable de la capacitación técnica en instalación, mantenimiento de nodos LoRa y configuración de gateways MQTT.
+  \item[Técnico Meshtastic Argentina] Por definir. Responsable de la capacitación técnica en instalación y mantenimiento de nodos LoRa.
 
-  \item[José Ruiz] Coordinador Técnico del Colectivo Nodo Norte. Especialista en electricidad, instalación de paneles solares, bioconstrucción y permacultura. Guía de turismo. Reside en Tres Cruces, Quebrada de Humahuaca. Su combinación de saberes técnicos y conocimiento territorial profundo lo posiciona como el perfil idóneo para el despliegue de nodos solares en altura y para el acompañamiento de los emprendimientos turísticos que la red habilita.
+  \item[Instalador local] Por definir. Técnico con experiencia en trabajo en altura. Responsable del despliegue de nodos en campo.
 \end{description}
 
 % ═══════════════════════════════════════════════════════════════════════════════
@@ -483,7 +411,7 @@ Al finalizar la Etapa 1:
 \vfill
 {\color{primary}\rule{\linewidth}{1pt}}
 {\small\color{darkgray}\centering
-  Documento generado en \LaTeX{} --- Versión 1.1 --- Mayo 2026\\
+  Documento generado en \LaTeX{} --- Versión 1.0 --- Mayo 2026\\
   Repositorio: \href{https://github.com/Colectivo-Nodo-Norte/Red-Yerba-Buena}{github.com/Colectivo-Nodo-Norte/Red-Yerba-Buena}
 }
 
